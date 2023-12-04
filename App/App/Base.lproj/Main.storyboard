@@ -541,7 +541,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="lblName" destination="ETF-zW-otk" id="Bj7-cZ-NXv"/>
+                                            <outlet property="content" destination="cV6-n7-TAI" id="BuM-im-mky"/>
+                                            <outlet property="handle" destination="acL-Tl-fTy" id="qYk-3g-oEW"/>
+                                            <outlet property="name" destination="ETF-zW-otk" id="Kis-lK-XBP"/>
+                                            <outlet property="profilePic" destination="U8q-0n-G0k" id="rDJ-US-0V1"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
