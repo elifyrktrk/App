@@ -7,20 +7,37 @@
 
 import UIKit
 
-class HomeViewTableViewCell: UITableViewCell {
+public class HomeViewTableViewCell: UITableViewCell {
 
     
-    @IBOutlet weak var lblName: UILabel!
+    @IBOutlet weak var profilePic: UIImageView!
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var handle: UILabel!
+    @IBOutlet weak var content: UITextView!
     
-    override func awakeFromNib() {
+
+    override public func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    public func configure(profilePic: String?, name: String, handle: String, content: String) {
+        self.content.text = content
+        self.handle.text = "@" + handle // handle değişkenini @ işaretiyle birleştir
+        self.name.text = name
+        
+        if((profilePic) != nil)
+        {
+            let imageData = NSData(contentsOf: NSURL(string:profilePic!)! as URL)
+            self.profilePic.image = UIImage(data:imageData! as Data)
+            
+        }
+        else
+        {
+            self.profilePic.image = UIImage(named: "handle")
+        }
+        
     }
-
+   
+    
 }
