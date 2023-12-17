@@ -23,12 +23,19 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             if let data = snapshot.value as? [String: Any] {
                 self.loggedInUserData = data
                 
+                print("Logged In User Data: \(data)")
+                
                 if let uid = data["uid"] as? String {
-                    self.databaseRef.child("contents/\(uid)").observe(.childAdded) { (contentSnapshot) in                    self.contents.append(contentSnapshot)
+                    self.databaseRef.child("contents/\(uid)").observe(.childAdded) { (contentSnapshot) in 
+                        if let contentData = contentSnapshot.value as? [String: Any] {
+                                              print("Content Data: \(contentData)")
+                                          }
+                       
                         let indexPath = IndexPath(row: self.contents.count - 1, section: 0)
                         self.homeTableView.insertRows(at: [indexPath], with: .automatic)
                         
                         self.aivLoading.stopAnimating()
+                        self.homeTableView.reloadData()
                     }
                 }
             }
