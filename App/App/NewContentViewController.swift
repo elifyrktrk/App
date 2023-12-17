@@ -60,7 +60,7 @@ class NewContentViewController: UIViewController, UITextViewDelegate, UITextFiel
         
         if(newContentTextView.text.count > 0)
         {
-            let key = self.databaseRef.child("content").childByAutoId().key
+            let key = self.databaseRef.child("contents").childByAutoId().key
             
 //            let childUpdates = [
 //                "/content/\(self.loggedInUser!.uid)/\(key)\text": newContentTextView.text,
@@ -68,8 +68,8 @@ class NewContentViewController: UIViewController, UITextViewDelegate, UITextFiel
 //            ] as [String : Any]
             
             let childUpdates = [
-                "content/\(self.loggedInUser!.uid)/\(key)/text": newContentTextView.text,
-                "content/\(self.loggedInUser!.uid)/\(key)/timestamp": "\(NSDate().timeIntervalSince1970)"
+                "contents/\(self.loggedInUser!.uid)/\(key)/text": newContentTextView.text,
+                "contents/\(self.loggedInUser!.uid)/\(key)/timestamp": "\(NSDate().timeIntervalSince1970)"
             ] as [String : Any]
 
             

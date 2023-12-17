@@ -18,7 +18,6 @@ public class HomeViewTableViewCell: UITableViewCell {
 
     override public func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     public func configure(profilePic: String?, name: String, handle: String, content: String) {
@@ -36,8 +35,6 @@ public class HomeViewTableViewCell: UITableViewCell {
         {
             self.profilePic.image = UIImage(named: "handle")
         }
-        
     }
-   
     
 }

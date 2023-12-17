@@ -580,8 +580,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="homekit" catalog="system" id="o2o-Hy-dej"/>
                     <connections>
-                        <outlet property="aivLoading" destination="EKE-Pf-nMP" id="d9U-CX-YiW"/>
-                        <outlet property="homeTableView" destination="2gE-eA-nLY" id="kHm-66-zWD"/>
+                        <outlet property="aivLoading" destination="EKE-Pf-nMP" id="eJU-OS-nBZ"/>
+                        <outlet property="homeTableView" destination="2gE-eA-nLY" id="Q8F-HD-V1c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Muq-Yi-726" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
