@@ -16,6 +16,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        aivLoading.startAnimating()
+
         self.loggedInUser = Auth.auth().currentUser
         
         self.databaseRef.child("user_profiles").child(self.loggedInUser!.uid).observeSingleEvent(of: .value) { (snapshot) in
@@ -35,6 +37,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                     
                     
                     self.aivLoading.stopAnimating()
+                    self.aivLoading.hidesWhenStopped = true
                     self.homeTableView.reloadData()
                 }
             }
