@@ -20,6 +20,7 @@
 		1ACC4BA32B193B8200268DE3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACC4BA22B193B8200268DE3 /* HomeViewController.swift */; };
 		1ACC4BA52B1949DB00268DE3 /* HomeViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACC4BA42B1949DB00268DE3 /* HomeViewTableViewCell.swift */; };
 		1ACC4BA72B19512800268DE3 /* NewContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACC4BA62B19512800268DE3 /* NewContentViewController.swift */; };
+		1AE0EC332B3780AF00B220F0 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE0EC322B3780AF00B220F0 /* MeViewController.swift */; };
 		970A1DEE03C23FCF4A4DB8C7 /* Pods_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80D8964C19DD0755927CA0F0 /* Pods_App.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		1ACC4BA22B193B8200268DE3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1ACC4BA42B1949DB00268DE3 /* HomeViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewTableViewCell.swift; sourceTree = "<group>"; };
 		1ACC4BA62B19512800268DE3 /* NewContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContentViewController.swift; sourceTree = "<group>"; };
+		1AE0EC322B3780AF00B220F0 /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		639DBFBD8F3B2C4491BA5720 /* Pods-App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App.release.xcconfig"; path = "Target Support Files/Pods-App/Pods-App.release.xcconfig"; sourceTree = "<group>"; };
 		80D8964C19DD0755927CA0F0 /* Pods_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD2993E92F864665B31E3392 /* Pods-App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App.debug.xcconfig"; path = "Target Support Files/Pods-App/Pods-App.debug.xcconfig"; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				1ACC4BA22B193B8200268DE3 /* HomeViewController.swift */,
 				1ACC4BA42B1949DB00268DE3 /* HomeViewTableViewCell.swift */,
 				1ACC4BA62B19512800268DE3 /* NewContentViewController.swift */,
+				1AE0EC322B3780AF00B220F0 /* MeViewController.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AE0EC332B3780AF00B220F0 /* MeViewController.swift in Sources */,
 				1ACC4B8B2B19297D00268DE3 /* ViewController.swift in Sources */,
 				1ACC4B872B19297D00268DE3 /* AppDelegate.swift in Sources */,
 				1ACC4BA72B19512800268DE3 /* NewContentViewController.swift in Sources */,
