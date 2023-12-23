@@ -28,16 +28,6 @@ class NewContentViewController: UIViewController, UITextViewDelegate, UITextFiel
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     @IBAction func didTapCancel(_ sender: Any) {
         
         dismiss(animated: true, completion: nil)
@@ -61,12 +51,7 @@ class NewContentViewController: UIViewController, UITextViewDelegate, UITextFiel
         if(newContentTextView.text.count > 0)
         {
             let key = self.databaseRef.child("contents").childByAutoId().key
-            
-//            let childUpdates = [
-//                "/content/\(self.loggedInUser!.uid)/\(key)\text": newContentTextView.text,
-//                "/content/\(self.loggedInUser!.uid)/\(key)\timestamp": "\(NSDate().timeIntervalSince1970)"
-//            ] as [String : Any]
-            
+      
             let childUpdates = [
                 "contents/\(self.loggedInUser!.uid)/\(key)/text": newContentTextView.text,
                 "contents/\(self.loggedInUser!.uid)/\(key)/timestamp": "\(NSDate().timeIntervalSince1970)"

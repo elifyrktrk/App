@@ -7,83 +7,62 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var databaseRef = Database.database().reference()
     var loggedInUser: User?
     var loggedInUserData: [String: Any]?
-
+    
     var contents = [AnyObject?]()
-
+    
     @IBOutlet weak var homeTableView: UITableView!
     @IBOutlet weak var aivLoading: UIActivityIndicatorView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.loggedInUser = Auth.auth().currentUser
-
+        
         self.databaseRef.child("user_profiles").child(self.loggedInUser!.uid).observeSingleEvent(of: .value) { (snapshot) in
-           
+            
             if let data = snapshot.value as? [String: Any] {
                 self.loggedInUserData = data
                 
                 print("Logged In User Data: \(data)")
                 
-               
-
+                
+                
                 self.databaseRef.child("contents/\(self.loggedInUser!.uid)").observe(.childAdded) { (snapshot) in
-
-                        self.contents.append(snapshot)
+                    
+                    self.contents.append(snapshot)
                     
                     self.homeTableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
-
-                        
-                        self.aivLoading.stopAnimating()
-                        self.homeTableView.reloadData()
-                    }
-                
-                                                             
-
+                    
+                    
+                    self.aivLoading.stopAnimating()
+                    self.homeTableView.reloadData()
+                }
             }
         }
     }
-
-        func numberOfSections(in tableView: UITableView) -> Int {
-            return 1
-        }
-
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return self.contents.count
-        }
-
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeViewTableViewCell", for: indexPath) as! HomeViewTableViewCell
-//        
-//        let content = contents[(self.contents.count - 1) - indexPath.row] as? String
-//       
-//        cell.configure(profilePic: nil,name:self.loggedInUserData!["name"] as! String,handle:self.loggedInUserData!["handle"] as! String, content:content!)
-//        print("TableView hücresi oluşturuldu: \(cell)")
-//
-//           return cell
-//
-//        }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.contents.count
+    }
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeViewTableViewCell", for: indexPath) as! HomeViewTableViewCell
         
-        
-//        Bu kod satırı, contents adlı dizinin içinden belirli bir indeksteki elemanı alır ve bu elemanın bir [String: Any] türünde bir sözlük olup olmadığını kontrol eder. Kodun anlamını adım adım açıklayalım:
-//
-//        self.contents.count - 1: Bu ifade, contents dizisinin eleman sayısını alır ve bir eksiltme yapar. Çünkü dizi indeksleri sıfırdan başlar, ancak eleman sayısı sıfırdan başlamaz. Bu şekilde en sonuncu elemana ulaşılır.
-//
-//        indexPath.row: Bu değer, şu anda işlenen tablo hücresinin indeksini temsil eder.
-//
-//        (self.contents.count - 1) - indexPath.row: Bu ifade, dizinin en sonuncu elemanından başlayarak tablo hücrelerini geri sayar ve mevcut indeksi belirler.
-//
-//        contents[(self.contents.count - 1) - indexPath.row]: Bu ifade, contents dizisindeki belirli bir indeksteki elemanı alır.
-//
-//        as? [String: Any]: Bu ifade, alınan elemanın bir [String: Any] türünde bir sözlük olup olmadığını kontrol eder. Eğer bu koşul sağlanıyorsa, contentData adlı bir değişken içine atanır; aksi takdirde, nil olur.
-        if let contentData = contents[(self.contents.count - 1) - indexPath.row] as? [String: Any],
-            let name = self.loggedInUserData?["name"] as? String,
-            let handle = self.loggedInUserData?["handle"] as? String,
-            let content = contentData["content"] as? String {
+        if let contentSnapshot = contents[(self.contents.count - 1) - indexPath.row] as? DataSnapshot,
+           let contentData = contentSnapshot.value as? [String: Any],
+           let name = self.loggedInUserData?["name"] as? String,
+           let handle = self.loggedInUserData?["handle"] as? String,
+           let content = contentData["text"] as? String { // Değişiklik burada: "text" değerini alıyoruz
+            // Kontrol edilen değerleri yazdır
+            print("contentData: \(contentSnapshot)")
+            print("name: \(name)")
+            print("handle: \(handle)")
+            print("content: \(content)")
             
             cell.configure(
                 profilePic: contentData["profilePic"] as? String,
@@ -92,16 +71,20 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 content: content
             )
         } else {
+            // Sorunlu durumda, değerleri yazdır
             print("contentData: \(contents[(self.contents.count - 1) - indexPath.row])")
-//
+            print("name: \(self.loggedInUserData?["name"] as? String)")
+            print("handle: \(self.loggedInUserData?["handle"] as? String)")
+            
+            if let contentSnapshot = contents[(self.contents.count - 1) - indexPath.row] as? DataSnapshot {
+                print("content: \(contentSnapshot.value as? [String: Any])")
+            } else {
+                print("contentSnapshot içindeki değer nil veya uygun türde değil.")
+            }
         }
-
-       
+        
         print("TableView hücresi oluşturuldu: \(cell)")
         return cell
     }
-
-    }
-
-
+}
 
